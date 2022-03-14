@@ -9,7 +9,7 @@ class Category(models.Model):
     
 class Product(models.Model):
     
-    class PostObjects(models.Manager):
+    class ProductObjects(models.Manager):
         def get_queryset(self):
             return super(Product, self).get_queryset() .filter(status='published')
     
@@ -26,6 +26,8 @@ class Product(models.Model):
     published = models.DateTimeField(default = timezone.now())
     status = models.CharField(max_length=10, choices=options, default = 'published',)
     objects = models.Manager() # default manager
+    link = models.URLField()
+    
     
     class Meta:
         ordering = ('-published')
