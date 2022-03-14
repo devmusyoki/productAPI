@@ -23,14 +23,14 @@ class Product(models.Model):
     price = models.FloatField(max_length=100)
     image = models.ImageField()
     slug = models.SlugField(max_length=250)
-    published = models.DateTimeField(default = timezone.now())
+    published = models.DateTimeField(timezone.now())
     status = models.CharField(max_length=10, choices=options, default = 'published',)
     objects = models.Manager() # default manager
     link = models.URLField()
     
     
     class Meta:
-        ordering = ('-published')
+        ordering = ('-published',)
  
 
     def __str__(self):

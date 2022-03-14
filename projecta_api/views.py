@@ -2,8 +2,8 @@ from rest_framework import generics
 from projecta.models import Product
 from .serializers import ProductSerializer
 
-class ProductList(generic.ListCreateAPIView):
-    queryset = Product.productobjects.all()
+class ProductList(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
     serializer_class = ProductSerializer
     pass
 
