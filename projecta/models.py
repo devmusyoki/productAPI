@@ -2,7 +2,9 @@ from django.db import models
 from django.utils import timezone
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    rows = models.BooleanField(default=False)
+    dropdown = models.BooleanField(default=False)
     
     def __str__(self):
         return self.name
