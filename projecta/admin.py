@@ -1,6 +1,7 @@
 from django.contrib import admin
+from mptt.admin import DraggableMPTTAdmin
 from projecta.models import Product, Category
 
 # Register your models here.
 admin.site.register(Product)
-admin.site.register(Category)
+admin.site.register(Category, DraggableMPTTAdmin)
