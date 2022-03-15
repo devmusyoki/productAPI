@@ -5,5 +5,5 @@ app_name = "sidebar_api"
 
 urlpatterns = [
     path('<int:pk>/', SidebarDetail.as_view(), name='detailcreate'),
-    path('sidebar', SidebarList.as_view(), name='listcreate'),
+    path('', SidebarList.as_view(), name='listcreate'),
 ]

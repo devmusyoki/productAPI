@@ -4,4 +4,4 @@ from projecta.models import Category
 class CategorySerializer(serializers.Serializer):
     class Meta:
         model = Category
-        fields = () 
+        fields = ('title',) 
