@@ -27,6 +27,7 @@ class Product(models.Model):
     published = models.DateTimeField(timezone.now())
     status = models.CharField(max_length=10, choices=options, default = 'published',)
     objects = models.Manager() # default manager
+    ProductObjects = models.Manager() # custom manager
     link = models.URLField()
     
     

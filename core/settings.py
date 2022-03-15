@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'projecta',
-    'projecta_api'
+    'projecta_api',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
