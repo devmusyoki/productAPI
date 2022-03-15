@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'core',
     'projecta',
     'projecta_api',
-    'rest_framework'
+    'rest_framework',
+    'mptt'
 ]
 
 MIDDLEWARE = [
