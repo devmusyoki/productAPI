@@ -1,13 +1,21 @@
 from django.db import models
+from mptt.models import MPTTModel, TreeForeignKey
 from django.utils import timezone
 
-class Category(models.Model):
+class Category(MPTTModel):
     title = models.CharField(max_length=100)
-    rows = models.BooleanField(default=False)
-    dropdown = models.BooleanField(default=False)
-    
+    slug = models.SlugField()
+    parentCategory = TreeForeignKey('self',
+                            blank=True,
+                            null=True,
+                            related_name='subcategories',
+                            on_delete=models.CASCADE)
+    description = models.TextField(blank=True)
     def __str__(self):
         return self.name
+
+    class MPTTMeta:
+        order_insertion_by = ['title']
 
 
 
