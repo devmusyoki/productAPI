@@ -4,13 +4,14 @@ from django.utils import timezone
 
 class Category(MPTTModel):
     title = models.CharField(max_length=100)
-    slug = models.SlugField()
+    slug = models.SlugField(null=True)
     parentCategory = TreeForeignKey('self',
                             blank=True,
                             null=True,
                             related_name='subcategories',
                             on_delete=models.CASCADE)
     description = models.TextField(blank=True)
+    
     def __str__(self):
         return self.name
 
