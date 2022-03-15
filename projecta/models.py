@@ -12,11 +12,17 @@ class Category(MPTTModel):
                             on_delete=models.CASCADE)
     description = models.TextField(blank=True)
     
-    def __str__(self):
-        return self.name
-
+    class Meta:
+        verbose_name_plural = "Categories"
+    
     class MPTTMeta:
         order_insertion_by = ['title']
+        parent_attr = 'parentCategory'
+        
+      
+        
+        def __str__(self):
+            return self.title
 
 
 

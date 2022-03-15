@@ -4,8 +4,7 @@ from projecta.models import Category
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    subCategories = serializers.ListSerializer(
-        source="subcategories", required=False, child=RecursiveField(), read_only=True)
+    subcategories = serializers.ListSerializer(required=False, child=RecursiveField(), read_only=True)
 
     class Meta:
         model = Category
