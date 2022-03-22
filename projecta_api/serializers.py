@@ -4,4 +4,4 @@ from projecta.models import Product
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ('name', 'description', 'image', 'link','price',)
+        fields = ('title', 'description', 'image', 'link','price',)

@@ -3,24 +3,21 @@ from mptt.models import MPTTModel, TreeForeignKey
 from django.utils import timezone
 
 class Category(MPTTModel):
-    title = models.CharField(max_length=100)
-    slug = models.SlugField(null=True)
-    parentCategory = TreeForeignKey('self',
-                            blank=True,
-                            null=True,
-                            related_name='subcategories',
-                            on_delete=models.CASCADE)
-    description = models.TextField(blank=True)
-    
-    class Meta:
-        verbose_name_plural = "Categories"
+    parent = TreeForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
+    title = models.CharField(max_length=30)
+    image= models.ImageField(blank=True, upload_to='images/')
+    description = models.TextField(max_length=200, blank=True)
+    slug = models.SlugField(max_length=130, editable=False)
+    create_at= models.DateTimeField(auto_now_add=True)
+    updated_at= models.DateTimeField(auto_now=True)
     
     class MPTTMeta:
         order_insertion_by = ['title']
-        parent_attr = 'parentCategory'
-        
-      
-        
+    
+    class Meta:
+        verbose_name_plural = "Categories"
+
+
     def __str__(self):
         return f"{self.title}"
 
@@ -37,22 +34,27 @@ class Product(models.Model):
            ('published', 'Published')
        )
     
-    Category = models.ForeignKey(Category, on_delete=models.PROTECT, default =1 )
-    name = models.CharField(max_length=100)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    title = models.CharField(max_length=100)
     price = models.FloatField(max_length=100)
     description = models.CharField(default="some product", max_length=100)
-    image = models.ImageField()
+    image = models.ImageField(blank=True, upload_to='images/')
     slug = models.SlugField(max_length=250)
-    published = models.DateTimeField(timezone.now())
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateField(auto_now=True)
     status = models.CharField(max_length=10, choices=options, default = 'published',)
     objects = models.Manager() # default manager
     ProductObjects = models.Manager() # custom manager
     link = models.URLField()
     
-    
-    class Meta:
-        ordering = ('-published',)
- 
+    def __str__(self):
+        return self.title
+
+
+class Images(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    image = models.ImageField(blank=True, upload_to='images/')
 
     def __str__(self):
-        return self.name
+        return self.title

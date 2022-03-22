@@ -1,12 +1,17 @@
 from rest_framework import serializers
-from rest_framework_recursive.fields import RecursiveField
 from projecta.models import Category
+from rest_framework import serializers
+
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    subcategories = serializers.ListSerializer(required=False, child=RecursiveField(), read_only=True)
-
     class Meta:
         model = Category
-        fields = ['title', 'subcategories']
+        fields = ('id', 'title', 'parent', 'children')
+
+    def get_fields(self):
+        fields = super(CategorySerializer, self).get_fields()
+        fields['children'] = CategorySerializer(many=True)
+        return fields
+
 

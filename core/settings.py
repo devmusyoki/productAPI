@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'projecta',
     'projecta_api',
     'rest_framework',
-    'mptt'
+    'mptt',
+    'django_filters',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +135,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
