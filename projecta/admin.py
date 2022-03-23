@@ -1,6 +1,6 @@
 from django.contrib import admin
 from mptt.admin import DraggableMPTTAdmin
-from projecta.models import Images, Category, Product
+from projecta.models import Images, Category, Product , Type
 
 
 # Register your models here.
@@ -59,3 +59,4 @@ class CategoryAdmin2(DraggableMPTTAdmin):
 admin.site.register(Category, CategoryAdmin2)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Images)
+admin.site.register(Type)
