@@ -20,7 +20,7 @@ class Category(MPTTModel):
     image= models.ImageField(blank=True, upload_to='images/')
     description = models.TextField(max_length=200, blank=True)
     slug = models.SlugField(max_length=130, editable=False)
-    type = models.OneToOneField(Type, on_delete=models.CASCADE, null=True, unique=True)
+    type = models.OneToOneField(Type, on_delete=models.CASCADE, null=True,)
     create_at= models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
     

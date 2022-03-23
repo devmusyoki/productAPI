@@ -7,7 +7,7 @@ from rest_framework import serializers
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ('id', 'title', 'parent', 'children')
+        fields = ('id', 'title', 'parent', 'type', 'children')
 
     def get_fields(self):
         fields = super(CategorySerializer, self).get_fields()

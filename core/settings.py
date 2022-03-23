@@ -166,7 +166,10 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
-ALLOWED_HOSTS = ['http://localhost:3000/']
+ALLOWED_HOSTS = ['http://localhost:3000/',
+                 'http://127.0.0.1:8000/',
+                 '127.0.0.1'
+                 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -175,5 +178,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOWED_ORIGIN = (
     
     'http://localhost:3000/',
+    'http://127.0.0.1:8000/admin/',
+    'localhost'
     
 )
