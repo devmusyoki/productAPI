@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,8 +58,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -80,7 +79,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -167,18 +165,14 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 ALLOWED_HOSTS = ['http://localhost:3000/',
-                 'http://127.0.0.1:8000/',
-                 '127.0.0.1'
+                 'localhost',
+                 '127.0.0.1',
                  ]
 
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_ALLOW_ALL = False
 
-CORS_ALLOWED_ORIGIN = (
-    
-    'http://localhost:3000/',
-    'http://127.0.0.1:8000/admin/',
-    'localhost'
-    
-)
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000"
+]
