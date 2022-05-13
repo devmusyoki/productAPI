@@ -15,7 +15,7 @@ class Type(models.Model):
 
 
 class Category(MPTTModel):
-    parent = TreeForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
+    parent = TreeForeignKey('self', blank=True, null=True, related_name='entries', on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
     image= models.ImageField(blank=True, upload_to='images/')
     description = models.TextField(max_length=200, blank=True)
